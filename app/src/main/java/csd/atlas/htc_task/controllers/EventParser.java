@@ -1,4 +1,4 @@
-package csd.atlas.htc_task;
+package csd.atlas.htc_task.controllers;
 
 
 import android.content.Context;
@@ -11,16 +11,15 @@ import org.json.JSONObject;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+
+import csd.atlas.htc_task.pojo.Event;
 
 /**
  * Created by FRAME on 2/25/2018.
@@ -124,7 +123,6 @@ public class EventParser {
                 event.setLongitude(53.2044800);
             }
             events.add(event);
-
         }
     }
 
@@ -206,8 +204,4 @@ public class EventParser {
         }
         return null;
     }
-
-    public void loadThumbnail() {
-    } //лучше пикассо
-
 }

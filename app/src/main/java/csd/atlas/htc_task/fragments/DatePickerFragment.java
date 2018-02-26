@@ -1,4 +1,4 @@
-package csd.atlas.htc_task;
+package csd.atlas.htc_task.fragments;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -15,6 +15,8 @@ import android.widget.DatePicker;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+
+import csd.atlas.htc_task.R;
 
 /**
  * Created by FRAME on 2/25/2018.

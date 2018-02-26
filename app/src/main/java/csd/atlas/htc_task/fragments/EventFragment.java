@@ -1,4 +1,4 @@
-package csd.atlas.htc_task;
+package csd.atlas.htc_task.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -20,6 +20,10 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
+
+import csd.atlas.htc_task.controllers.EventParser;
+import csd.atlas.htc_task.R;
+import csd.atlas.htc_task.pojo.Event;
 
 /**
  * Created by FRAME on 2/25/2018.

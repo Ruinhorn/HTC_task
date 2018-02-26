@@ -1,10 +1,11 @@
-package csd.atlas.htc_task;
+package csd.atlas.htc_task.acvtivities;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
+
+import csd.atlas.htc_task.FragmentActivityHolder;
+import csd.atlas.htc_task.fragments.EventFragment;
 
 
 /**

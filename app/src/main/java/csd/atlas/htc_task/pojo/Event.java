@@ -1,4 +1,4 @@
-package csd.atlas.htc_task;
+package csd.atlas.htc_task.pojo;
 
 import android.support.annotation.NonNull;
 

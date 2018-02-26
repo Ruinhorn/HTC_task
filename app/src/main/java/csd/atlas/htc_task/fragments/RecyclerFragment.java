@@ -1,11 +1,10 @@
-package csd.atlas.htc_task;
+package csd.atlas.htc_task.fragments;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,12 +15,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+
+import csd.atlas.htc_task.acvtivities.EventActivity;
+import csd.atlas.htc_task.controllers.EventParser;
+import csd.atlas.htc_task.R;
+import csd.atlas.htc_task.controllers.VkAuth;
+import csd.atlas.htc_task.pojo.Event;
 
 
 /**
