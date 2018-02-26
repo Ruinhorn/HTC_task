@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">HTC-test</string>
+    <string name="bttn_login">Login</string>
+    <string name="bttn_search">Search</string>
+    <string name="bttn_from">Date from</string>
+    <string name="bttn_to">Date to</string>
+    <string name="date_picker_title">Pick date</string>
+
+</resources>
