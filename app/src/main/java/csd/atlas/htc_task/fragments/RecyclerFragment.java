@@ -134,7 +134,6 @@ public class RecyclerFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        setupAdapter();
     }
 
     @Override
