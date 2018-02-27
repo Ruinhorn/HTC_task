@@ -5,5 +5,8 @@
     <string name="bttn_from">Date from</string>
     <string name="bttn_to">Date to</string>
     <string name="date_picker_title">Pick date</string>
+    <string name="recycler_menu_update">Show all</string>
+    <string name="event_menu_calendar">Show in calendar</string>
+    <string name="event_menu_openvk">Show in VK</string>
 
 </resources>

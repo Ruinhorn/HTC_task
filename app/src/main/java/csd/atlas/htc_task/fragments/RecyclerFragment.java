@@ -11,6 +11,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -33,14 +36,14 @@ import csd.atlas.htc_task.pojo.Event;
 
 public class RecyclerFragment extends Fragment {
 
-    private static final int REQUEST_ENDDATE      = 2;
-    private static final int REQUEST_STARTDATE    = 1;
-    private static final int REQUEST_TOKEN        = 0;
-    private static final String DIALOG_DATE       = "DialogDate";
-    private static final String SAVED_TOKEN       = "saved token";
-    private static final String SAVED_BTTN_STATE  = "bttn_state";
+    private static final int REQUEST_ENDDATE = 2;
+    private static final int REQUEST_STARTDATE = 1;
+    private static final int REQUEST_TOKEN = 0;
+    private static final String DIALOG_DATE = "DialogDate";
+    private static final String SAVED_TOKEN = "saved token";
+    private static final String SAVED_BTTN_STATE = "bttn_state";
     private static final String SAVED_START_STATE = "saved_start_state";
-    private static final String SAVED_END_STATE   = "saved_end_state";
+    private static final String SAVED_END_STATE = "saved_end_state";
 
     private List<Event> mEvents;
 
@@ -76,12 +79,12 @@ public class RecyclerFragment extends Fragment {
             mAccessToken = savedInstanceState.getString(SAVED_TOKEN);
             mBttnsShow = savedInstanceState.getBoolean(SAVED_BTTN_STATE);
             mDateStart = (Date) savedInstanceState.getSerializable(SAVED_START_STATE);
-            if (mDateStart != null){
+            if (mDateStart != null) {
                 mBttnStartDate.setText(DateFormat.getDateInstance(DateFormat.SHORT)
                         .format(mDateStart));
             }
             mDateEnd = (Date) savedInstanceState.getSerializable(SAVED_END_STATE);
-            if (mDateEnd != null){
+            if (mDateEnd != null) {
                 mBttnEndDate.setText(DateFormat.getDateInstance(DateFormat.SHORT)
                         .format(mDateEnd));
             }
@@ -121,10 +124,16 @@ public class RecyclerFragment extends Fragment {
         return v;
     }
 
+
+    private void setBttns(boolean state) {
+        mBttnsShow = state;
+        mBttnStartDate.setEnabled(state);
+        mBttnEndDate.setEnabled(state);
+    }
+
     @Override
     public void onResume() {
         super.onResume();
-        setupAdapter();
     }
 
     @Override
@@ -147,9 +156,29 @@ public class RecyclerFragment extends Fragment {
         }
     }
 
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+//TODO
+        switch (item.getItemId()) {
+            case R.id.recycler_update_menu:
+                setBttns(false);
+                new GetAllEvents().execute();
+                setupAdapter();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.recycler_fragment, menu);
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
     }
 
     private class EventHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -167,7 +196,7 @@ public class RecyclerFragment extends Fragment {
 
         private void bindEvent(Event event) {
             mEvent = event;
-            String dateToShow ="Дата проведения: с " +
+            String dateToShow = "Дата проведения: с " +
                     DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.MEDIUM)
                             .format(mEvent.getStartDate()) + " по " +
                     DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.MEDIUM)
@@ -216,6 +245,7 @@ public class RecyclerFragment extends Fragment {
         }
 
     }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -270,9 +300,8 @@ public class RecyclerFragment extends Fragment {
         @Override
         protected void onPostExecute(List<Event> events) {
             mEvents = events;
-            mBttnEndDate.setEnabled(true);
-            mBttnStartDate.setEnabled(true);
-            mBttnsShow = true;
+            setBttns(true);
         }
     }
 }
+

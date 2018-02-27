@@ -185,9 +185,7 @@ public class EventParser {
     }
 
     public void showAllEvents() {
-        if (mEvents == null) {
-            parseVK();
-        }
+        parseVK();
         result = mEvents;
     }
 
