@@ -154,18 +154,18 @@ public class EventParser {
     }
 
     //Ограничение по дате окончания
-//    public void showEventsSortedByEndDate(Date end) {
-//        ArrayList<Event> sorted = new ArrayList<>();
-//        if (mEvents == null) {
-//            parseVK();
-//        }
-//        for (Event e : mEvents) {
-//            if (e.getEndDate().before(end)) {
-//                sorted.add(e);
-//            }
-//        }
-//        result = sorted;
-//    }
+    public void showEventsSortedByEndDate(Date end) {
+        ArrayList<Event> sorted = new ArrayList<>();
+        if (mEvents == null) {
+            parseVK();
+        }
+        for (Event e : mEvents) {
+            if (e.getStartDate().before(end)) {
+                sorted.add(e);
+            }
+        }
+        result = sorted;
+    }
 
     //Отображение в промежуке дат
     public void showEventsSortedByBothDates(Date start, Date end) {

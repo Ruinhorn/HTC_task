@@ -275,7 +275,7 @@ public class RecyclerFragment extends Fragment {
             case REQUEST_ENDDATE:
                 mDateEnd = (Date) data.getSerializableExtra(DatePickerFragment.EXTRA_DATE);
                 if (mDateStart == null) {
-                    EventParser.get(getActivity()).showEventsSortedByStartDate(mDateEnd);
+                    EventParser.get(getActivity()).showEventsSortedByEndDate(mDateEnd);
                     Log.i("GOT________ENDDATE", mDateEnd.toString());
                 } else {
                     EventParser.get(getActivity()).showEventsSortedByBothDates(
