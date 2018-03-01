@@ -33,7 +33,7 @@ public class EventParser {
     private List<Event> mEvents;
     private List<Event> result;
     private final static String API_REQUEST =
-            "https://api.vk.com/method/groups.search?q=%20&type=event&city_id=56&fields=start_date,finish_date,place,description&count=1000&access_token=";
+            "https://api.vk.com/method/groups.search?q=%20&type=event&city_id=56&v=5.70&fields=start_date,finish_date,place,description&count=1000&access_token=";
 
 
     private EventParser(Context context) {
@@ -94,17 +94,17 @@ public class EventParser {
 
     // По хардкору, без гсона
     private void createItem(List<Event> events, JSONObject jsonBody) throws JSONException {
-        JSONArray jsonArray = jsonBody.getJSONArray("response");
-        for (int i = 1; i < jsonArray.length(); i++) {
+        JSONArray jsonArray = jsonBody.getJSONObject("response").getJSONArray("items");
+        for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject eventJson = jsonArray.getJSONObject(i);
             Event event = new Event();
-            event.setGid(eventJson.getLong("gid"));
+            event.setGid(eventJson.getLong("id"));
             event.setName(eventJson.getString("name"));
-            event.setThumbnail(eventJson.getString("photo_big"));
-            if (eventJson.has("start_date")) {
+            event.setThumbnail(eventJson.getString("photo_200"));
+            try {
                 event.setStartDate(convertDate(eventJson.getLong("start_date")));
-                event.setEndDate(convertDate(eventJson.getLong("finish_date")));
-            } else {
+            } catch (JSONException e) {
+                Log.i("CANNOT SET DATE: ", event.getName());
                 continue;
             }
             if (eventJson.has("description")) {
@@ -154,24 +154,24 @@ public class EventParser {
     }
 
     //Ограничение по дате окончания
-    public void showEventsSortedByEndDate(Date end) {
-        ArrayList<Event> sorted = new ArrayList<>();
-        if (mEvents == null) {
-            parseVK();
-        }
-        for (Event e : mEvents) {
-            if (e.getEndDate().before(end)) {
-                sorted.add(e);
-            }
-        }
-        result = sorted;
-    }
+//    public void showEventsSortedByEndDate(Date end) {
+//        ArrayList<Event> sorted = new ArrayList<>();
+//        if (mEvents == null) {
+//            parseVK();
+//        }
+//        for (Event e : mEvents) {
+//            if (e.getEndDate().before(end)) {
+//                sorted.add(e);
+//            }
+//        }
+//        result = sorted;
+//    }
 
     //Отображение в промежуке дат
     public void showEventsSortedByBothDates(Date start, Date end) {
         ArrayList<Event> sorted = new ArrayList<>();
         for (Event e : mEvents) {
-            if (e.getEndDate().getTime() >= start.getTime() &&
+            if (e.getStartDate().getTime() >= start.getTime() &&
                     e.getStartDate().getTime() <= end.getTime()) {
                 sorted.add(e);
             }

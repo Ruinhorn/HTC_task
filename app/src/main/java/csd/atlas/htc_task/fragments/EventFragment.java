@@ -64,11 +64,9 @@ public class EventFragment extends Fragment implements OnMapReadyCallback {
         mEventName = (TextView) v.findViewById(R.id.event_name);
         mEventName.setText(mEvent.getName());
         mEventStartDate = (TextView) v.findViewById(R.id.event_start_date);
-        String dateToShow ="Дата проведения: с " +
+        String dateToShow = "Дата начала: " +
                 DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.MEDIUM)
-                        .format(mEvent.getStartDate()) + " по " +
-                        DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.MEDIUM)
-                                .format(mEvent.getEndDate());
+                        .format(mEvent.getStartDate());
         mEventStartDate.setText(dateToShow);
         mEventDescription = (TextView) v.findViewById(R.id.event_description);
         mEventDescription.setMovementMethod(new ScrollingMovementMethod());

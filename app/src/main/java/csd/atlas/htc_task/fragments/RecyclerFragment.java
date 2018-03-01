@@ -196,11 +196,9 @@ public class RecyclerFragment extends Fragment {
 
         private void bindEvent(Event event) {
             mEvent = event;
-            String dateToShow = "Дата проведения: с " +
+            String dateToShow = "Дата начала: " +
                     DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.MEDIUM)
-                            .format(mEvent.getStartDate()) + " по " +
-                    DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.MEDIUM)
-                            .format(mEvent.getEndDate());
+                            .format(mEvent.getStartDate());
 
             mEventTitleText.setText(event.getName());
             mEventSdateText.setText(dateToShow);
@@ -277,7 +275,7 @@ public class RecyclerFragment extends Fragment {
             case REQUEST_ENDDATE:
                 mDateEnd = (Date) data.getSerializableExtra(DatePickerFragment.EXTRA_DATE);
                 if (mDateStart == null) {
-                    EventParser.get(getActivity()).showEventsSortedByEndDate(mDateEnd);
+                    EventParser.get(getActivity()).showEventsSortedByStartDate(mDateEnd);
                     Log.i("GOT________ENDDATE", mDateEnd.toString());
                 } else {
                     EventParser.get(getActivity()).showEventsSortedByBothDates(

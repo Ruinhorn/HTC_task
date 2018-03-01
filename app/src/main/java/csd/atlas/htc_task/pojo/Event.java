@@ -13,7 +13,6 @@ public class Event implements Comparable<Event> {
     private double longitude;
     private double latitude;
     private Date mStartDate;
-    private Date mEndDate;
     private String mName;
     private String mThumbnail;
     private String mDescription;
@@ -64,14 +63,6 @@ public class Event implements Comparable<Event> {
 
     public void setStartDate(Date startDate) {
         mStartDate = startDate;
-    }
-
-    public Date getEndDate() {
-        return mEndDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        mEndDate = endDate;
     }
 
     public String getThumbnail() {
