@@ -1,4 +1,4 @@
-package csd.atlas.htc_task.acvtivities;
+package csd.atlas.htc_task.activities;
 
 import android.support.v4.app.Fragment;
 

@@ -1,4 +1,4 @@
-package csd.atlas.htc_task.acvtivities;
+package csd.atlas.htc_task.activities;
 
 import android.content.Context;
 import android.content.Intent;

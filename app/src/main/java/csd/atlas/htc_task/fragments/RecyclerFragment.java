@@ -23,7 +23,7 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
 
-import csd.atlas.htc_task.acvtivities.EventActivity;
+import csd.atlas.htc_task.activities.EventActivity;
 import csd.atlas.htc_task.controllers.EventParser;
 import csd.atlas.htc_task.R;
 import csd.atlas.htc_task.controllers.VkAuth;

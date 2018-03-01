@@ -16,14 +16,14 @@
         android:theme="@style/AppTheme"
         android:windowSoftInputMode="stateHidden"
         >
-        <activity android:name=".acvtivities.RecyclerActivity">
+        <activity android:name=".activities.RecyclerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".acvtivities.EventActivity">
+        <activity android:name=".activities.EventActivity">
         </activity>
         <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyCO9vic5i4YfT3RmyOi5cDmFhAR_lhNurI"/>
     </application>
